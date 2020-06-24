@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="White"
+             Title="Home"
+             x:Class="TicTacToe.View.HomeView">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <Image Source="app_icon_3x.png"
+                   Aspect="Fill"
+                   HorizontalOptions="CenterAndExpand"/>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsBarVisible}">
+
+                <BoxView HeightRequest="20" BackgroundColor="Blue" WidthRequest="{Binding WinWidth}"/>
+                <BoxView HeightRequest="20" BackgroundColor="Red" WidthRequest="{Binding LoseWidth}"/>
+            </StackLayout>
+            <Label Text="{Binding WinPercentage}" FontSize="Medium" TextColor="Blue"
+                    HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="EndAndExpand"
+                   Text="PLAY"
+                   FontSize="Large"
+                   BackgroundColor="Transparent"
+                   TextColor="#10A5FF"
+                   AutomationId="PlayButton">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PlayCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

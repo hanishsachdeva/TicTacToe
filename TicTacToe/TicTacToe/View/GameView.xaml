@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Game"
+             x:Class="TicTacToe.View.GameView">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Grid.Row="0"
+                     Grid.ColumnSpan="7">
+                <Label Text="Done,"
+                   TextColor="#10A5FF"
+                   HorizontalOptions="Center"
+                   FontSize="Large">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DoneCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label HorizontalOptions="Center"
+                   FontSize="Medium">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="playing against " TextColor="Blue"/>
+                            <Span Text="my mobile" TextColor="#EF67AA"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <Grid ColumnSpacing="10"
+          RowSpacing="10"
+          VerticalOptions="CenterAndExpand"
+          HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <!--Current Player / Winner-->
+                    <RowDefinition Height="Auto"/>
+                    <!--Reset Button-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Grid.Row="0"
+               Grid.Column="0"
+               AutomationId="Play0"
+               Source="{Binding Play0}"
+                             BackgroundColor="Transparent"
+                             Command="{Binding PlayCommand}"
+                CommandParameter="0">
+                </ImageButton>
+
+                <Image Grid.Row="0"
+               Grid.Column="1"
+               Source="line_vertical_1.png"
+               Grid.RowSpan="5"/>
+
+                <ImageButton Grid.Row="0"
+               Grid.Column="2"
+               AutomationId="Play1"
+               Source="{Binding Play1}"
+                         BackgroundColor="Transparent"
+                         Command="{Binding PlayCommand}"
+                CommandParameter="1">
+                </ImageButton>
+
+                <Image Grid.Row="0"
+               Grid.Column="3"
+               Grid.RowSpan="5"
+               Source="line_vertical_2.png"/>
+
+                <ImageButton Grid.Row="0"
+               Grid.Column="4"
+               AutomationId="Play2"
+               Source="{Binding Play2}"
+                         BackgroundColor="Transparent"
+                         Command="{Binding PlayCommand}"
+                CommandParameter="2">
+                </ImageButton>
+
+                <Image Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="5"
+               Source="line_horizontal_1.png"/>
+
+                <ImageButton Grid.Row="2"
+               Grid.Column="0"
+               AutomationId="Play3"
+               Source="{Binding Play3}"
+                         BackgroundColor="Transparent"
+                         Command="{Binding PlayCommand}"
+                CommandParameter="3">
+                </ImageButton>
+
+                <ImageButton Grid.Row="2"
+               Grid.Column="2"
+               AutomationId="Play4"
+               Source="{Binding Play4}"
+                      Command="{Binding PlayCommand}"
+                         BackgroundColor="Transparent"
+                CommandParameter="4">
+                </ImageButton>
+
+                <ImageButton Grid.Row="2"
+                         BackgroundColor="Transparent"
+               Grid.Column="4"
+               AutomationId="Play5"
+               Source="{Binding Play5}"
+                     Command="{Binding PlayCommand}"
+                CommandParameter="5">
+                </ImageButton>
+
+                <Image Grid.Row="3"
+               Grid.Column="0"
+               Grid.ColumnSpan="5"
+               Source="line_horizontal_2.png"/>
+
+                <ImageButton Grid.Row="4"
+               Grid.Column="0"
+               AutomationId="Play6"
+                         BackgroundColor="Transparent"
+                         Command="{Binding PlayCommand}"
+                CommandParameter="6"
+               Source="{Binding Play6}">
+                </ImageButton>
+
+                <ImageButton Grid.Row="4"
+               Grid.Column="2"
+               AutomationId="Play7"
+               Source="{Binding Play7}"
+                         BackgroundColor="Transparent"
+                         Command="{Binding PlayCommand}"
+                CommandParameter="7">
+                </ImageButton>
+
+                <ImageButton  Grid.Row="4"
+               Grid.Column="4"
+               AutomationId="Play8"
+               Source="{Binding Play8}"
+                          BackgroundColor="Transparent"
+                          Command="{Binding PlayCommand}"
+                CommandParameter="8">
+                </ImageButton>
+
+            </Grid>
+            <StackLayout Spacing="10" Margin="0,-40,0,0" IsVisible="{Binding GameOver}">
+                <Label Text="{Binding Result}"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   TextColor="#EF67AA"/>
+
+                <Image AutomationId="Play8"
+                   Source="{Binding ImageSource}"/>
+
+                <Label Text="PLAY AGAIN"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   TextColor="#10A5FF"
+                   AutomationId="ResetGame">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
